@@ -7,7 +7,7 @@ using namespace juce;
 PlayerGUI::PlayerGUI()
 {
     // Add buttons
-    for (auto* btn : { &loadButton, &restartButton , &stopButton , &playButton , &muteButton })
+    for (auto* btn : { &loadButton, &endButton , &stopButton , &playButton , &muteButton,&gotostartButton })
     {
         btn->addListener(this);
         addAndMakeVisible(btn);
@@ -95,10 +95,6 @@ void PlayerGUI::buttonClicked(juce::Button* button)
             });
     }
 
-    if (button == &restartButton)
-    {
-        playerAudio.start();
-    }
 
     if (button == &stopButton)
     {
@@ -115,7 +111,15 @@ void PlayerGUI::buttonClicked(juce::Button* button)
     if (button == &muteButton)
     {
 		playerAudio.mute();
-    }
+    } 
+	if(button == &gotostartButton){
+playerAudio.start();
+playerAudio.setPosition(0.0);
+  }
+  if(button == &endButton){
+playerAudio.getLength(); 
+playerAudio.setPosition(playerAudio.getLength());
+  }
 
 
 
@@ -129,3 +133,4 @@ void PlayerGUI::sliderValueChanged(juce::Slider* slider)
 
 
 }
+
