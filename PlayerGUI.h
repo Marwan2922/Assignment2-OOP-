@@ -28,7 +28,7 @@ private:
 	TextButton muteButton;
 
 	juce::Slider volumeSlider;
-	juce::Slider speedSlider;
+
 
 	std::unique_ptr<juce::FileChooser> fileChooser;
 	// Event handlers
@@ -36,3 +36,4 @@ private:
 	void sliderValueChanged(Slider* slider) override;
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayerGUI)
 }; 
+
