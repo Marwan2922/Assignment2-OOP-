@@ -21,10 +21,11 @@ public:
 private:
 	PlayerAudio playerAudio;
 	// GUI elements
-	TextButton restartButton{ "Restart" };
 	TextButton stopButton{ "Stop" };
 	TextButton playButton{"play"};
 	TextButton loadButton{ "Load File" };
+TextButton gotostartButton{ "go to start" };
+TextButton endButton{ "End" };
 	TextButton muteButton;
 
 	juce::Slider volumeSlider;
@@ -36,4 +37,5 @@ private:
 	void sliderValueChanged(Slider* slider) override;
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayerGUI)
 }; 
+
 
