@@ -27,7 +27,6 @@ private:
 	TextButton gotostartButton{ "go to start" };
 	TextButton endButton{ "End" };
 	TextButton muteButton;
-
 	ToggleButton loopButton{ "Loop" };
 	bool isLooping = false;
 
@@ -40,4 +39,4 @@ private:
 	void buttonClicked(Button* button) override;
 	void sliderValueChanged(Slider* slider) override;
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayerGUI)
-};
+};		
