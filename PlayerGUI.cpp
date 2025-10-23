@@ -1,13 +1,11 @@
-
-
-#include "PlayerGUI.h"
+#include "PlayerAudioGUI.h"
 using namespace std;
 using namespace juce;
 
 PlayerGUI::PlayerGUI()
 {
     // Add buttons
-    for (auto* btn : { &loadButton, &endButton , &stopButton , &playButton , &muteButton,&gotostartButton })
+    for (auto* btn : { &loadButton, &endButton , &stopButton , &playButton , &muteButton,&gotostartButton,&loopButton })
     {
         btn->addListener(this);
         addAndMakeVisible(btn);
@@ -30,6 +28,16 @@ PlayerGUI::PlayerGUI()
         playerAudio.setGain(ismuted ? 1.0f : 0.0f);
         };
     addAndMakeVisible(&muteButton);
+
+    loopButton.addListener(this);
+    addAndMakeVisible(loop);
+
+    loop.onClick = [this]() 
+        {
+        isLooping = loop.getToggleState();
+        playerAudio.setLooping(isLooping);
+        };
+    addAndMakeVisible(&loop);
 }
 PlayerGUI::~PlayerGUI()
 {
@@ -64,6 +72,8 @@ void PlayerGUI::resized()
     playButton.setBounds(440, y, 80, 40);
     endButton.setBounds(540, y, 80, 40);
     gotostartButton.setBounds(640, y, 100, 40);
+    loopButton.setBounds(760, y, 80, 40);
+   
     /*prevButton.setBounds(340, y, 80, 40);
     nextButton.setBounds(440, y, 80, 40);*/
 
@@ -121,9 +131,6 @@ void PlayerGUI::buttonClicked(juce::Button* button)
         playerAudio.getLength();
         playerAudio.setPosition(playerAudio.getLength());
     }
-
-
-
 }
 
 
@@ -131,7 +138,4 @@ void PlayerGUI::sliderValueChanged(juce::Slider* slider)
 {
     if (slider == &volumeSlider)
         playerAudio.setGain((float)slider->getValue());
-
-
 }
-
