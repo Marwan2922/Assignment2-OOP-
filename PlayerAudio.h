@@ -18,12 +18,12 @@ public:
 	double getLength() const;
 	void mute();
 	void unmute();
-	void setSpeed(double ratio);
 private:
 	juce::AudioFormatManager formatManager;
 	std::unique_ptr<juce::AudioFormatReaderSource> readerSource;
 	juce::AudioTransportSource transportSource;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayerAudio)
+
 
 };
