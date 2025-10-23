@@ -89,9 +89,7 @@ void PlayerAudio::unmute()
 	transportSource.setGain(1.0f);
 }
 
-void PlayerAudio::setSpeed(double ratio)
-{
-    
-}
+
+
 
 
