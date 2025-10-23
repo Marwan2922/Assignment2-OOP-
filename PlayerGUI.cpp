@@ -19,12 +19,6 @@ PlayerGUI::PlayerGUI()
     volumeSlider.addListener(this);
     addAndMakeVisible(volumeSlider);
     
-    // Speed slider
-    speedSlider.setRange(0.5, 2.0, 0.01);
-    speedSlider.setValue(1.0);
-    speedSlider.addListener(this);
-    addAndMakeVisible(speedSlider);
-
     // muted button 
     muteButton.setButtonText("Mute");
     muteButton.setToggleState(true, juce::dontSendNotification); 
@@ -73,7 +67,7 @@ void PlayerGUI::resized()
     nextButton.setBounds(440, y, 80, 40);*/
 
     volumeSlider.setBounds(20, 100, getWidth() - 40, 30);
-	speedSlider.setBounds(20, 150, getWidth() - 40, 30);
+
 }
 
 void PlayerGUI::buttonClicked(juce::Button* button)
@@ -133,5 +127,5 @@ void PlayerGUI::sliderValueChanged(juce::Slider* slider)
     if (slider == &volumeSlider)
         playerAudio.setGain((float)slider->getValue());
 
-		
+
 }
