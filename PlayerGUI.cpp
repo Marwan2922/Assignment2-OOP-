@@ -63,6 +63,8 @@ void PlayerGUI::resized()
     stopButton.setBounds(240, y, 80, 40);
 	muteButton.setBounds(340, y, 80, 40);
 	playButton.setBounds(440, y, 80, 40);
+	endButton.setBounds(580, y, 80, 40);
+	gotostartButton.setBounds(340, y, 100, 40);
     /*prevButton.setBounds(340, y, 80, 40);
     nextButton.setBounds(440, y, 80, 40);*/
 
@@ -133,4 +135,5 @@ void PlayerGUI::sliderValueChanged(juce::Slider* slider)
 
 
 }
+
 
