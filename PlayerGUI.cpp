@@ -1,11 +1,11 @@
-#include "PlayerAudioGUI.h"
+#include "PlayerGUI.h"
 using namespace std;
 using namespace juce;
 
 PlayerGUI::PlayerGUI()
 {
     // Add buttons
-    for (auto* btn : { &loadButton, &endButton , &stopButton , &playButton , &muteButton,&gotostartButton,&loopButton })
+    for (auto* btn : { &loadButton, &endButton , &stopButton , &playButton , &muteButton, &gotostartButton, } )
     {
         btn->addListener(this);
         addAndMakeVisible(btn);
@@ -29,15 +29,16 @@ PlayerGUI::PlayerGUI()
         };
     addAndMakeVisible(&muteButton);
 
+    // loop button
     loopButton.addListener(this);
-    addAndMakeVisible(loop);
+    addAndMakeVisible(loopButton);
 
-    loop.onClick = [this]() 
+    loopButton.onClick = [this]()
         {
-        isLooping = loop.getToggleState();
-        playerAudio.setLooping(isLooping);
+            isLooping = loopButton.getToggleState();
+            playerAudio.setLooping(isLooping);
         };
-    addAndMakeVisible(&loop);
+    addAndMakeVisible(&loopButton);
 }
 PlayerGUI::~PlayerGUI()
 {
@@ -73,7 +74,7 @@ void PlayerGUI::resized()
     endButton.setBounds(540, y, 80, 40);
     gotostartButton.setBounds(640, y, 100, 40);
     loopButton.setBounds(760, y, 80, 40);
-   
+
     /*prevButton.setBounds(340, y, 80, 40);
     nextButton.setBounds(440, y, 80, 40);*/
 
