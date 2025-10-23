@@ -18,12 +18,13 @@ public:
 	double getLength() const;
 	void mute();
 	void unmute();
+	void setLooping(bool shouldLoop);
+	bool isLooping() const;
 private:
 	juce::AudioFormatManager formatManager;
 	std::unique_ptr<juce::AudioFormatReaderSource> readerSource;
 	juce::AudioTransportSource transportSource;
+	bool looping = false;
 
 	JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlayerAudio)
-
-
 };
